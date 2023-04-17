@@ -1,6 +1,6 @@
 public class Paciente extends Pessoa{
-    // vacinas ja tumadas => dia que tumou
-    //  vacinas ja n tumadas
+    // vacinas ja tomadas => dia que tumou
+    //  vacinas ja n tomadas
 
     Paciente(){
         super(null, null, 0, 0, 0);
