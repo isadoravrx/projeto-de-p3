@@ -1,8 +1,8 @@
 public class Paciente extends Pessoa{
-    // vacinas ja tomadas => dia que tumou
-    //  vacinas ja n tomadas
+    boolean[] vacinas;
 
-    Paciente(){
+    Paciente(String nome, String cpf, int dia, int mes, int ano, boolean[] vacinas){
         super(null, null, 0, 0, 0);
+        this.vacinas = vacinas;
     }
 }
