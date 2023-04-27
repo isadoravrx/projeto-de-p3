@@ -11,6 +11,10 @@ public class Vacina{
     int[] numero_de_doses_reforco_crianca = {0,0,2,0,2,1,1,1,0,0,0,2,1,8,0,0,0} ;
     int[] numero_de_doses_reforco_adolescentes;
     int[] numero_de_doses_reforco_adultos;
+
+    int[] intervalo_entre_doses_crianca = {0,0,30,30,30,60,60,30,30,30,0,180,30,0,0,30};
+    int[] intervalo_entre_doses_adolescentes;
+    int[] intervalo_entre_doses_adultos;
     
     // todas vacinas
     // quantidade de doses 
