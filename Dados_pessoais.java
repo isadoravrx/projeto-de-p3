@@ -85,6 +85,21 @@ public class Dados_pessoais {
                 diaNascimento = (int) comboBoxDia.getSelectedItem();
                 mesNascimento = (String) comboBoxMes.getSelectedItem();
                 anoNascimento = (int) comboBoxAno.getSelectedItem();
+
+                int idade;
+                Calendar hoje = Calendar.getInstance();
+                int anodehoje = hoje.get(Calendar.YEAR);
+                int mesdehoje = hoje.get(Calendar.MONTH);
+                int diadehoje = hoje.get(Calendar.DAY_OF_MONTH);
+
+                idade = anodehoje - anoNascimento;
+                if (mesdehoje < mes) {
+                    idade--;
+                } else if (diadehoje < diaNascimento && mesdehoje == mes) {
+                    idade--;
+                }
+
+                Selecionando_vacinas.prnt(idade);
             }
         });
     }
