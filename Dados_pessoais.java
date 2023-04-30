@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 public class Dados_pessoais{
-    private static int diaNascimento, anoNascimento;
+    private static int diaNascimento, anoNascimento, idade;
     private static String nome, cpf, mesNascimento;
 
     public static void prnt() {
@@ -87,8 +87,6 @@ public class Dados_pessoais{
                 mesNascimento = (String) comboBoxMes.getSelectedItem();
                 anoNascimento = (int) comboBoxAno.getSelectedItem();
                 
-                
-                int idade;
                 Calendar hoje = Calendar.getInstance();
                 int anodehoje = hoje.get(Calendar.YEAR);
                 int mesdehoje = hoje.get(Calendar.MONTH);
@@ -135,6 +133,10 @@ public class Dados_pessoais{
 
     public static String getNome() {
         return nome;
+    }
+
+    public static int getIdade() {
+        return idade;
     }
 
 }

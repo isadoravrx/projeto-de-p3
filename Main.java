@@ -4,7 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main {
+    static Paciente fulano;
+
     public static void main(String[] args) {
+
         JFrame janela = new JFrame("Login");
 
         // Criação dos componentes da interface
@@ -25,6 +28,8 @@ public class Main {
         botaoLogar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Faça algo quando o botão "Logar" for clicado...
+                
+                
                 janela.dispose();
             }
         });
@@ -36,10 +41,17 @@ public class Main {
                 // Faça algo quando o botão "Criar Conta" for clicado...
                
                 Dados_pessoais.prnt();
+                cirarConta();
             }
+
         });
+        
 
 
+    }
+
+    protected static void cirarConta() {
+        fulano = new Paciente(Dados_pessoais.getNome(), Dados_pessoais.getCpf(), Dados_pessoais.getIdade(), Selecionando_vacinas.getSelectedItems());
     }
 
 }
