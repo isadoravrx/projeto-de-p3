@@ -3,10 +3,8 @@ import java.util.Calendar;
 public class Main{
 
     public static void main(String[] args) {
-        while(Frontend.getBootC() == false && Frontend.getBootL() == false){
-            Frontend.prnt();
-        }
-
+       
+        Frontend.prnt();
 
         if(Frontend.getBootL()){
             

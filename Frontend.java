@@ -28,9 +28,9 @@ public class Frontend {
 
         // Configurações da janela
         janela.setSize(300, 150);
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         janela.setVisible(true);
-
+        
         // Adição de ação para o botão "Logar"
         botaoLogar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -46,6 +46,7 @@ public class Frontend {
                 bootC = true;
             }
         });
+
     }
 
     
