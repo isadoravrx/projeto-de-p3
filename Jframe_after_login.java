@@ -1,52 +1,51 @@
 import javax.swing.*;
 import java.awt.*;
-import java.text.ParseException;
-import javax.swing.text.MaskFormatter;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Jframe_after_login extends JFrame {
-    private JTextField cpfField;
+public class Jframe_after_login {
 
-    public CpfFrame() {
-        // Configurações básicas do JFrame
-        setTitle("Digite o CPF");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(300, 100));
+    public static void prt(){
+        JFrame janela = new JFrame("Fazendo login");
 
-        // Criação do JLabel para exibir a mensagem
-        JLabel label = new JLabel("CPF: ");
+        JLabel labelCPF = new JLabel("CPF:");
+        JTextField campoCPF = new JTextField(14);
+        JButton botaoentrar = new JButton("Entrar");
+    
+        
+        // Configurações da janela
+        janela.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 10, 10);
 
-        // Criação do JFormattedTextField para permitir a digitação do CPF formatado
-        try {
-            MaskFormatter formatter = new MaskFormatter("###.###.###-##");
-            cpfField = new JFormattedTextField(formatter);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        janela.add(labelCPF, gbc);
+        gbc.gridy++;
 
-        // Criação do JButton para permitir que o usuário envie o CPF
-        JButton button = new JButton("Enviar");
-        button.addActionListener(e -> {
-            String cpf = cpfField.getText();
-            // Aqui você pode realizar as ações desejadas com o CPF, como armazená-lo em um banco de dados
-            System.out.println("CPF digitado: " + cpf);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+
+        janela.add(campoCPF,gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        janela.add(botaoentrar, gbc);
+
+        // Configurações da janela
+        janela.pack();
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setVisible(true);
+
+        // Adição de ação para o botão "Salvar"
+        botaoentrar.addActionListener(new ActionListener() { //se o cpf não estiver no banco de dados, tem que voltar a pedir o cpf
+            public void actionPerformed(ActionEvent e) {
+                janela.dispose();
+                
+            }
         });
-
-        // Adiciona os componentes ao JFrame
-        JPanel panel = new JPanel(new GridLayout(2, 2));
-        panel.add(label);
-        panel.add(cpfField);
-        panel.add(new JLabel());
-        panel.add(button);
-        getContentPane().add(panel);
-
-        // Exibe o JFrame
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
-
-    public static void main(String[] args) {
-        new CpfFrame();
-    }
+   
 }
 

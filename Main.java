@@ -29,7 +29,8 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 // Faça algo quando o botão "Logar" for clicado...
                 
-                
+                Jframe_after_login.prt();
+
                 janela.dispose();
             }
         });
