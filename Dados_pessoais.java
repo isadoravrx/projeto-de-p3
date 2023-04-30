@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 
-public class Dados_pessoais {
+public class Dados_pessoais{
     private static int diaNascimento, anoNascimento;
     private static String nome, cpf, mesNascimento;
 
@@ -78,6 +78,7 @@ public class Dados_pessoais {
         janela.setVisible(true);
 
         // Adição de ação para o botão "Salvar"
+        
         botaoSalvar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 nome = campoNome.getText();
@@ -85,21 +86,33 @@ public class Dados_pessoais {
                 diaNascimento = (int) comboBoxDia.getSelectedItem();
                 mesNascimento = (String) comboBoxMes.getSelectedItem();
                 anoNascimento = (int) comboBoxAno.getSelectedItem();
-
+                
+                
                 int idade;
                 Calendar hoje = Calendar.getInstance();
                 int anodehoje = hoje.get(Calendar.YEAR);
                 int mesdehoje = hoje.get(Calendar.MONTH);
                 int diadehoje = hoje.get(Calendar.DAY_OF_MONTH);
 
+                int mesnacimentointeiro = 0;
+                for(int j = 0; j < 12; j++){
+                    if(mesNascimento.equals(meses[j])){
+                        mesnacimentointeiro = j + 1;
+                        break;
+                    }
+                }
+                
+
                 idade = anodehoje - anoNascimento;
-                if (mesdehoje < mes) {
+                if (mesdehoje < mesnacimentointeiro) {
                     idade--;
-                } else if (diadehoje < diaNascimento && mesdehoje == mes) {
+                } else if (diadehoje < diaNascimento && mesdehoje == mesnacimentointeiro) {
                     idade--;
                 }
-
+                
+                janela.dispose();
                 Selecionando_vacinas.prnt(idade);
+
             }
         });
     }

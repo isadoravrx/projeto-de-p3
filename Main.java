@@ -18,24 +18,27 @@ public class Main {
 
         // Configurações da janela
         janela.setSize(300, 150);
-        janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
 
         // Adição de ação para o botão "Logar"
         botaoLogar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Faça algo quando o botão "Logar" for clicado...
-
+                janela.dispose();
             }
         });
 
         // Adição de ação para o botão "Criar Conta"
         botaoCriarConta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                
                 // Faça algo quando o botão "Criar Conta" for clicado...
+               
                 Dados_pessoais.prnt();
             }
         });
+
 
     }
 
