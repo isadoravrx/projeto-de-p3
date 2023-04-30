@@ -3,11 +3,13 @@ import java.util.Calendar;
 public class Main{
 
     public static void main(String[] args) {
-        Frontend.prnt();
+        while(Frontend.getBootC() == false && Frontend.getBootL() == false){
+            Frontend.prnt();
+        }
 
 
-        if(Frontend.getBoot() == true){
-
+        if(Frontend.getBootL()){
+            
         }else{
             Dados_pessoais.prnt();
 

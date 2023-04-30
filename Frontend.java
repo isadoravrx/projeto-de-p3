@@ -4,10 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Frontend {
-    private static boolean boot;
+    private static boolean bootL = false, bootC = false;
 
-    public static boolean getBoot(){
-        return boot;
+    public static boolean getBootL(){
+        return bootL;
+    }
+
+    public static boolean getBootC(){
+        return bootC;
     }
 
     public static void prnt() {
@@ -31,7 +35,7 @@ public class Frontend {
         botaoLogar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Faça algo quando o botão "Logar" for clicado...
-                boot = true;
+                bootL = true;
             }
         });
 
@@ -39,7 +43,7 @@ public class Frontend {
         botaoCriarConta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Faça algo quando o botão "Criar Conta" for clicado...
-                boot = false;
+                bootC = true;
             }
         });
     }
