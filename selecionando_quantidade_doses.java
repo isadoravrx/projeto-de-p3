@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Calendar;
 
 public class selecionando_quantidade_doses {
     public static void prnt(String cpf) {
@@ -27,10 +28,15 @@ public class selecionando_quantidade_doses {
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        List<Integer> quantidadevacinastomadas = new ArrayList<>();
-        List<String> dataUltimaDose = new ArrayList<>();
+        List<Integer> quantidadevacinastomadas = new ArrayList<>(); 
+        List<JComboBox<Integer>> dia = new ArrayList<>();
+        List<JComboBox<Integer>> mes = new ArrayList<>();
+        List<JComboBox<Integer>> ano = new ArrayList<>();
+        
 
         List<JComboBox<Integer>> comboDosesList = new ArrayList<>();
+
+        int anodehoje = Calendar.getInstance().get(Calendar.YEAR);
 
         for (int l = 0; l < vacinastomadas.length; l++) {
             JLabel vacinatomada = new JLabel(listavacinastomadas.get(l));
@@ -42,7 +48,7 @@ public class selecionando_quantidade_doses {
 
             gbc.gridx++;
 
-            JComboBox<Integer> comboDoses = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8});
+            JComboBox<Integer> comboDoses = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8}); //2)criar jcombobox pra dia mes e ano, lembrando que o jcombobox
             janela.add(comboDoses, gbc);
             comboDosesList.add(comboDoses);
 
@@ -50,17 +56,42 @@ public class selecionando_quantidade_doses {
             JLabel data = new JLabel("data:");
             janela.add(data, gbc);
 
+            gbc.gridx++;
+
+            JComboBox<Integer> combodias = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30});
+            janela.add(combodias, gbc);
+            dia.add(combodias);
+
+            gbc.gridx++;
+
+            JComboBox<Integer> combomeses = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12});
+            janela.add(combomeses, gbc);
+            mes.add(combomeses);
+
+            gbc.gridx++;
+
+            JComboBox<Integer> comboanos = new JComboBox<>();
+            for(int i = anodehoje; i >= anodehoje - 50; i--){
+                comboanos.addItem(i);
+            } 
+            janela.add(comboanos, gbc);
+            ano.add(comboanos);
+
             gbc.gridy++;
             gbc.gridx = 0;
         }
 
-        gbc.gridy = 0;
-        gbc.gridx = 3;
+        gbc.gridy = vacinastomadas.length; 
+        gbc.gridx = 3; 
 
         JButton salvar = new JButton("Save");
         janela.add(salvar, gbc);
 
-        salvar.addActionListener(new ActionListener() {
+
+        List<Integer>diaselecionado = new ArrayList<>();
+        List<Integer>meselecionado = new ArrayList<>();
+        List<Integer>anoselecionado = new ArrayList<>();
+        salvar.addActionListener(new ActionListener() {  //3) botar um for, que passa pelos elementos de cada lista de inteiro(dia mes e ano), e vai adicionar na datalistadose , dia|mes|ano
             public void actionPerformed(ActionEvent e) {
                 quantidadevacinastomadas.clear();
 
@@ -69,7 +100,23 @@ public class selecionando_quantidade_doses {
                     quantidadevacinastomadas.add(quantidade);
                 }
 
-                System.out.println("Quantidades de doses selecionadas: " + quantidadevacinastomadas);
+                for(JComboBox<Integer> combo : dia){
+                    int diaselec = (int) combo.getSelectedItem();
+                    diaselecionado.add(diaselec);
+                }
+
+                for(JComboBox<Integer> combo : mes){
+                    int meselc = (int) combo.getSelectedItem();
+                    meselecionado.add(meselc);
+                }
+
+                for(JComboBox<Integer> combo : ano){
+                    int anoselec = (int) combo.getSelectedItem();
+                    anoselecionado.add(anoselec);
+                }
+
+
+                janela.dispose();
             }
         });
 
@@ -77,5 +124,7 @@ public class selecionando_quantidade_doses {
         janela.pack();
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
+
+        
     }
 }
