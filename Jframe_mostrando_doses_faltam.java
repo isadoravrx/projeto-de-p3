@@ -19,19 +19,14 @@ public class Jframe_mostrando_doses_faltam {
             listavacinastomadas.add(vacinastomadas[i]);
         }
         
-        int[] arraydose = null;
-        if(idade < 12){
-            arraydose = new int[Vacina.getDosesCrianca().length];
-        }else if(idade <= 18){
-            arraydose = new int[Vacina.getDosesAdolescentes().length];
-        }else{
-            arraydose = new int[Vacina.getDosesAdutos().length];
-        }
-        String[] doses = informacoespessois.get(informacoespessois.size()-1); 
+        
+        
+        String[] doses = informacoespessois.get(0)[7].split(", "); 
         List<String>listadose = new ArrayList<>();
         doses[0] = doses[0].replaceAll("\\[", "");
         doses[doses.length - 1 ] = doses[doses.length - 1].replaceAll("]", "");
 
+        int[] arraydose = new int[doses.length];
         for(int i = 0; i != arraydose.length; i++){
             arraydose[i] = Integer.parseInt(doses[i]);
         }
@@ -59,18 +54,55 @@ public class Jframe_mostrando_doses_faltam {
         gbc.gridy++;
 
         int index = 0, k = 0;
-        int[] newArrayDose = new int[Vacina.getDosesCrianca().length];
-        for(String i : Vacina.getVacinas_crianca()){
-            for(String j : dados.getVacinas()){
-                if(i.equals(j)){
-                    newArrayDose[index] = dados.getArraydose()[k];
-                    k++;
-                }else{
-                    newArrayDose[index] = Vacina.getDosesCrianca()[index];
+        int[] newArrayDose;
+        if(idade < 12){
+            newArrayDose = new int[Vacina.getDosesCrianca().length];
+            for(String i : Vacina.getVacinas_crianca()){
+                for(String j : dados.getVacinas()){
+                    if(i.equals(j)){
+                        newArrayDose[index] = Vacina.getDosesAdolescentes()[index] - dados.getArraydose()[k];
+                        k++;
+                    }else{
+                        newArrayDose[index] = Vacina.getDosesCrianca()[index];
+                    }
+    
                 }
+                index++;
             }
-            index++;
+        }else if(idade < 18){
+            newArrayDose = new int[Vacina.getDosesAdolescentes().length];
+
+            for(String i : Vacina.getVacinas_adolescente()){
+                for(String j : dados.getVacinas()){
+                    if(i.equals(j)){
+                        newArrayDose[index] = Vacina.getDosesAdutos()[index] - dados.getArraydose()[k];
+                        k++;
+                    }else{
+                        newArrayDose[index] = Vacina.getDosesAdolescentes()[index];
+                    }
+    
+                }
+                index++;
+            }
+        }else{
+            newArrayDose = new int[Vacina.getDosesAdutos().length];
+
+            for(String i : Vacina.getVacinas_adulto()){
+                for(String j : dados.getVacinas()){
+                    if(i.equals(j)){
+                        newArrayDose[index] = Vacina.getDosesAdutos()[index] - dados.getArraydose()[k];
+                        k++;
+                        break;
+                    }else{
+                        newArrayDose[index] = Vacina.getDosesAdutos()[index];
+                    }
+    
+                }
+                index++;
+            }
         }
+        
+        
 
         index = 0;
 
@@ -80,11 +112,12 @@ public class Jframe_mostrando_doses_faltam {
                 janela.add(vacina, gbc);
                 gbc.gridx++;
 
-                JLabel falta = new JLabel("faltam: "+arraydose[index]+" doses");
+                JLabel falta = new JLabel("faltam: "+ newArrayDose[index]+" doses");
                 janela.add(falta, gbc);
                 
                 gbc.gridx=0;
                 gbc.gridy++;
+                index++;
             }
         }else if(idade <= 18){
             for(String i : Vacina.getVacinas_adolescente()){
@@ -92,11 +125,12 @@ public class Jframe_mostrando_doses_faltam {
                 janela.add(vacina, gbc);
                 gbc.gridx++;
 
-                JLabel falta = new JLabel("faltam: "+arraydose[index]+" doses");
+                JLabel falta = new JLabel("faltam: "+newArrayDose[index]+" doses");
                 janela.add(falta, gbc);
                 
                 gbc.gridx=0;
                 gbc.gridy++;
+                index++;
             }
         }else{
             for(String i : Vacina.getVacinas_adulto()){
@@ -104,11 +138,12 @@ public class Jframe_mostrando_doses_faltam {
                 janela.add(vacina, gbc);
                 gbc.gridx++;
 
-                JLabel falta = new JLabel("faltam: "+arraydose[index]+" doses");
+                JLabel falta = new JLabel("faltam: "+newArrayDose[index]+" doses"); //problema
                 janela.add(falta, gbc);
                 
                 gbc.gridx=0;
                 gbc.gridy++;
+                index++;
             }
         }
         
