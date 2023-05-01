@@ -47,9 +47,11 @@ public class Jframe_after_login {
                 String cpf = (String) campoCPF.getText();
                 List<String[]> pessoa = bdd.buscarPessoa(cpf);
 
-                if(pessoa.size() != 0){
+                if(pessoa.size() != 0){// pessoa foi encontrada
                     janela.dispose();
-                    // janela com os dados
+                    //janela com quantas doses falta, e o dia da próxima dose
+                    Jframe_mostrando_doses_faltam.prnt(cpf);
+
                 }else{
                     // janela com mensagem de erro
                     Erro.prnt("Ocorreu um erro!\nCPF não encontrado.");

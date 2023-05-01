@@ -37,7 +37,8 @@ public class Main {
 
         /* Adição de ação para o botão "Criar Conta" */ 
         botaoCriarConta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {               
+            public void actionPerformed(ActionEvent e) {    
+                janela.dispose();           
                 Dados_pessoais.prnt();
             }
         });

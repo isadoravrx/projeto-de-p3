@@ -13,7 +13,7 @@ public class Banco_de_dados {
         try (FileWriter writer = new FileWriter(nomeArquivo, true)) {
             writer.write(nome + "/" + cpf + "/" + idade + "/" + selectedItems + "\n");
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); 
         }
     }
 
