@@ -9,6 +9,8 @@ public class Dados_pessoais{
     private static String nome, cpf, mesNascimento;
 
     public static void prnt() {
+        Banco_de_dados bdd = new Banco_de_dados();
+
         JFrame janela = new JFrame("Dados da Pessoa");
 
         // Criação dos componentes da interface
@@ -109,8 +111,8 @@ public class Dados_pessoais{
                 }
                 
                 janela.dispose();
+                bdd.adicionarPessoa(Dados_pessoais.getNome(), Dados_pessoais.getCpf());
                 Selecionando_vacinas.prnt(idade);
-
             }
         });
     }

@@ -2,14 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class Main {
     static Paciente fulano;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException{
+
+        Banco_de_dados bdd = new Banco_de_dados();
 
         JFrame janela = new JFrame("Login");
-
+        
         // Criação dos componentes da interface
         JButton botaoLogar = new JButton("Logar");
         JButton botaoCriarConta = new JButton("Criar Conta");
@@ -30,7 +33,6 @@ public class Main {
                 // Faça algo quando o botão "Logar" for clicado...
                 
                 Jframe_after_login.prt();
-
                 janela.dispose();
             }
         });
@@ -42,9 +44,7 @@ public class Main {
                 // Faça algo quando o botão "Criar Conta" for clicado...
                
                 Dados_pessoais.prnt();
-                cirarConta();
             }
-
         });
         
 
