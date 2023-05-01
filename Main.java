@@ -50,9 +50,4 @@ public class Main {
 
 
     }
-
-    protected static void cirarConta() {
-        fulano = new Paciente(Dados_pessoais.getNome(), Dados_pessoais.getCpf(), Dados_pessoais.getIdade(), Selecionando_vacinas.getSelectedItems());
-    }
-
 }

@@ -9,9 +9,9 @@ public class Banco_de_dados {
 
     private String nomeArquivo = "dados.txt";
 
-    public void adicionarPessoa(String nome, String cpf, int idade) {
+    public void adicionarPessoa(String nome, String cpf, int idade, List<String> selectedItems) {
         try (FileWriter writer = new FileWriter(nomeArquivo, true)) {
-            writer.write(nome + "/" + cpf + "/" + idade + "\n");
+            writer.write(nome + "/" + cpf + "/" + idade + "/" + selectedItems + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,31 +37,32 @@ public class Banco_de_dados {
         return pessoasEncontradas;
     }
 
-    public void atualizarPessoa(String cpfAntigo, String novoNome, String novoCpf) {
-        List<String> linhas = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
-            String linha;
-
-            while ((linha = reader.readLine()) != null) {
-                String[] campos = linha.split(",");
-
-                if (campos[1].equals(cpfAntigo)) {
-                    linhas.add(novoNome + "," + novoCpf);
-                } else {
-                    linhas.add(linha);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try (FileWriter writer = new FileWriter(nomeArquivo)) {
-            for (String linha : linhas) {
-                writer.write(linha + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public void atualizarPessoa(String nome, String cpf, int idade, List<String> selStrings) {
+      List<String> linhas = new ArrayList<>();
+  
+      try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
+          String linha;
+  
+          while ((linha = reader.readLine()) != null) {
+              String[] campos = linha.split("/");
+  
+              if (campos[1].equals(cpf)) {
+                  linhas.add(nome + "/" + cpf + "/" + idade + "/" + selStrings);
+              } else {
+                  linhas.add(linha);
+              }
+          }
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+  
+      try (FileWriter writer = new FileWriter(nomeArquivo)) {
+          for (String linha : linhas) {
+              writer.write(linha + "\n");
+          }
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+  }
+  
 }

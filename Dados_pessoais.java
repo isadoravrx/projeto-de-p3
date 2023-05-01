@@ -111,34 +111,9 @@ public class Dados_pessoais{
                 }
                 
                 janela.dispose();
-                bdd.adicionarPessoa(Dados_pessoais.getNome(), Dados_pessoais.getCpf());
-                Selecionando_vacinas.prnt(idade);
+                bdd.adicionarPessoa(nome, cpf, idade, null);
+                Selecionando_vacinas.prnt(nome, cpf, idade);
             }
         });
     }
-
-    public static int getAnoNascimento() {
-        return anoNascimento;
-    }
-
-    public static int getDiaNascimento() {
-        return diaNascimento;
-    }
-
-    public static int getMesNascimento() {
-        return Integer.parseInt(mesNascimento);
-    }
-
-    public static String getCpf() {
-        return cpf;
-    }
-
-    public static String getNome() {
-        return nome;
-    }
-
-    public static int getIdade() {
-        return idade;
-    }
-
 }

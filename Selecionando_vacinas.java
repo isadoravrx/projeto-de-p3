@@ -4,7 +4,10 @@ import java.util.List;
 public class Selecionando_vacinas {
     private static List<String> selectedItems;
 
-    public static void prnt(int idade) {
+    public static void prnt(String nome, String cpf, int idade) {
+        Banco_de_dados bdd = new Banco_de_dados();
+
+
         JScrollPane scrollPane;
         JCheckBoxList<String> checkBoxList;
 
@@ -30,10 +33,7 @@ public class Selecionando_vacinas {
 
         JOptionPane.showMessageDialog(null, scrollPane, "Quais vacinas você já tomou?", JOptionPane.PLAIN_MESSAGE);
         selectedItems = checkBoxList.getSelectedItems();
+    
+        bdd.atualizarPessoa(nome, cpf, idade, selectedItems);
     }
-
-    public static List<String> getSelectedItems() {
-        return selectedItems;
-    }
-
 }
