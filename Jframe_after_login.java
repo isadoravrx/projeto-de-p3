@@ -42,7 +42,7 @@ public class Jframe_after_login {
         janela.setVisible(true);
 
         /* Adição de ação para o botão "Salvar" */
-        botaoentrar.addActionListener(new ActionListener() { //se o cpf não estiver no banco de dados, tem que voltar a pedir o cpf
+        botaoentrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String cpf = (String) campoCPF.getText();
                 List<String[]> pessoa = bdd.buscarPessoa(cpf);
@@ -52,6 +52,7 @@ public class Jframe_after_login {
                     // janela com os dados
                 }else{
                     // janela com mensagem de erro
+                    Erro.prnt("Ocorreu um erro!\nCPF não encontrado.");
                 }
             }
         });
