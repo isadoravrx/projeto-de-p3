@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
@@ -57,30 +55,16 @@ public class selecionando_quantidade_doses {
         
         for(int l = 0; l < vacinastomadas.length; l++){
             JLabel vacinatomada = new JLabel(listavacinastomadas.get(l));
-            janela.add(vacinatomada, gbc);
-            gbc.gridy ++;
-        }
-
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        
-        for(int l = 0; l < vacinastomadas.length; l++){
+            janela.add(vacinatomada, gbc);            
+            gbc.gridx ++;
             janela.add(quantidadedose, gbc);
-            janela.add(quantidadeDosesbox, gbc);
-            
-            gbc.gridx++;
+            gbc.gridx ++;
             janela.add(data, gbc);
-            janela.add(dia, gbc);
-            janela.add(mes, gbc);
-            janela.add(ano, gbc);
-            gbc.gridx--;
-       
-            gbc.gridy++;
 
-            quantidadevacinastomadas.add((Integer) quantidadeDosesbox.getSelectedItem());
-            dataUltimaDose.add( dia.getSelectedItem() + "|" + mes.getSelectedItem() + "|" + ano.getSelectedItem());
+            gbc.gridy ++;
+            gbc.gridx = 0;
         }
-         
+        
         //configuração da janela
         janela.pack();
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

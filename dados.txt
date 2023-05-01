@@ -1,8 +1,11 @@
 gabriel/123/0/[poliomielite, penta, ppv 23]
 isadora/032945728/5/[bcg, febre amarela, difteria e tétano]g/543/0/nulla/1/0/null
 e/f/0/[vrh]
-//0/[sarampo, caxumba e rubéola]
+//0/[sarampo, caxumba, rubéola e varicela, difteria e tétano]
 ddh/sdhkij/0/[poliomielite, pcv 10, febre amarela, varicela]
 d/t/0/[penta, sarampo, caxumba e rubéola]
 dgsdaf/32563467/0/[poliomielite, pcv 10, hepatite a, varicela]
 dsgs3545/4542/0/[hepatite b, penta, sarampo, caxumba e rubéola, hpv]
+eaf/fgf/0/[poliomielite, febre amarela, hepatite a, hpv]
+sg/dgf/0/[hepatite b, pcv 10, hepatite a]
+//0/[sarampo, caxumba, rubéola e varicela, difteria e tétano]
