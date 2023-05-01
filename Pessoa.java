@@ -1,12 +1,22 @@
 public class Pessoa{
     private String nome, cpf;
-    private int dia, mes, ano;
+    private int idade;
 
-    Pessoa(String nome, String cpf, int dia, int mes, int ano){
+    Pessoa(String nome, String cpf, int idade){
         this.nome = nome;
         this.cpf = cpf;
-        this.dia = dia; 
-        this.mes = mes;
-        this.ano = ano;
+        this.idade = idade;
+        
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+    public int getIdade() {
+        return idade;
     }
 }

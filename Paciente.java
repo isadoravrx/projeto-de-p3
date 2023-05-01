@@ -4,7 +4,11 @@ public class Paciente extends Pessoa{
     List<String> vacinas;
 
     Paciente(String nome, String cpf, int idade, List<String> vacinas){
-        super(null, null, 0, 0, 0);
+        super(nome, cpf, idade);
         this.vacinas = vacinas;
     }
+
+    public List<String> getVacinas() {
+        return vacinas;
+    }    
 }
