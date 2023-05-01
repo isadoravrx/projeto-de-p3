@@ -2,10 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class Jframe_after_login {
 
     public static void prt(){
+        Banco_de_dados bdd = new Banco_de_dados();
+
         JFrame janela = new JFrame("Fazendo login");
 
         JLabel labelCPF = new JLabel("CPF:");
@@ -13,7 +16,7 @@ public class Jframe_after_login {
         JButton botaoentrar = new JButton("Entrar");
     
         
-        // Configurações da janela
+        /* Configurações da janela */
         janela.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -33,16 +36,23 @@ public class Jframe_after_login {
         gbc.gridwidth = 2;
         janela.add(botaoentrar, gbc);
 
-        // Configurações da janela
+        /* Configurações da janela */
         janela.pack();
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
 
-        // Adição de ação para o botão "Salvar"
+        /* Adição de ação para o botão "Salvar" */
         botaoentrar.addActionListener(new ActionListener() { //se o cpf não estiver no banco de dados, tem que voltar a pedir o cpf
             public void actionPerformed(ActionEvent e) {
-                janela.dispose();
-                
+                String cpf = (String) campoCPF.getText();
+                List<String[]> pessoa = bdd.buscarPessoa(cpf);
+
+                if(pessoa.size() != 0){
+                    janela.dispose();
+                    // janela com os dados
+                }else{
+                    // janela com mensagem de erro
+                }
             }
         });
     }

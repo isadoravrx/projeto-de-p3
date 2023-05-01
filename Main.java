@@ -13,36 +13,31 @@ public class Main {
 
         JFrame janela = new JFrame("Login");
         
-        // Criação dos componentes da interface
+        /*  Criação dos componentes da interface */
         JButton botaoLogar = new JButton("Logar");
         JButton botaoCriarConta = new JButton("Criar Conta");
 
-        // Adição dos componentes à janela
+        /* Adição dos componentes à janela */
         janela.setLayout(new GridLayout(2, 1, 10, 10));
         janela.add(botaoLogar);
         janela.add(botaoCriarConta);
 
-        // Configurações da janela
+        /* Configurações da janela */ 
         janela.setSize(300, 150);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
 
-        // Adição de ação para o botão "Logar"
+        /* Adição de ação para o botão "Logar" */
         botaoLogar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Faça algo quando o botão "Logar" for clicado...
-                
                 Jframe_after_login.prt();
                 janela.dispose();
             }
         });
 
-        // Adição de ação para o botão "Criar Conta"
+        /* Adição de ação para o botão "Criar Conta" */ 
         botaoCriarConta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                
-                // Faça algo quando o botão "Criar Conta" for clicado...
-               
+            public void actionPerformed(ActionEvent e) {               
                 Dados_pessoais.prnt();
             }
         });

@@ -35,5 +35,6 @@ public class Selecionando_vacinas {
         selectedItems = checkBoxList.getSelectedItems();
     
         bdd.atualizarPessoa(nome, cpf, idade, selectedItems);
+        // apos o botao save, adicionar uma outra janela perguntando a quantidade de doses tomadas e a quando
     }
 }

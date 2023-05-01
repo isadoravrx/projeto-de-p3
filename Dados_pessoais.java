@@ -13,7 +13,7 @@ public class Dados_pessoais{
 
         JFrame janela = new JFrame("Dados da Pessoa");
 
-        // Criação dos componentes da interface
+        /* Criação dos componentes da interface */ 
         JLabel labelNome = new JLabel("Nome:");
         JTextField campoNome = new JTextField(20);
 
@@ -41,7 +41,7 @@ public class Dados_pessoais{
 
         JButton botaoSalvar = new JButton("Salvar");
 
-        // Adição dos componentes à janela
+        /* Adição dos componentes à janela */ 
         janela.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -74,12 +74,12 @@ public class Dados_pessoais{
         gbc.gridwidth = 2;
         janela.add(botaoSalvar, gbc);
 
-        // Configurações da janela
+        /* Configurações da janela */ 
         janela.pack();
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
 
-        // Adição de ação para o botão "Salvar"
+        /* Adição de ação para o botão "Salvar" */
         
         botaoSalvar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
