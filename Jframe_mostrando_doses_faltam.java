@@ -18,8 +18,26 @@ public class Jframe_mostrando_doses_faltam {
 
             listavacinastomadas.add(vacinastomadas[i]);
         }
+        
+        int[] arraydose = null;
+        if(idade < 12){
+            arraydose = new int[Vacina.getDosesCrianca().length];
+        }else if(idade <= 18){
+            arraydose = new int[Vacina.getDosesAdolescentes().length];
+        }else{
+            arraydose = new int[Vacina.getDosesAdutos().length];
+        }
+        String[] doses = informacoespessois.get(informacoespessois.size()-1); 
+        List<String>listadose = new ArrayList<>();
+        doses[0] = doses[0].replaceAll("\\[", "");
+        doses[doses.length - 1 ] = doses[doses.length - 1].replaceAll("]", "");
 
-        Paciente dados = new Paciente(informacoespessois.get(0)[0], informacoespessois.get(0)[1],idade, listavacinastomadas);
+        for(int i = 0; i != arraydose.length; i++){
+            arraydose[i] = Integer.parseInt(doses[i]);
+        }
+        
+
+        Paciente dados = new Paciente(informacoespessois.get(0)[0], informacoespessois.get(0)[1],idade, listavacinastomadas, arraydose);
         JFrame janela = new JFrame("Próximas doses");
         JLabel labelnome = new JLabel("Nome: " + dados.getNome());
         
@@ -40,11 +58,60 @@ public class Jframe_mostrando_doses_faltam {
         janela.add(labelidade,gbc);
         gbc.gridy++;
 
-        for(int i = 0; i < vacinastomadas.length; i++){
-            JLabel vacinatomada = new JLabel(listavacinastomadas.get(i) + " ->" + " faltam " + " doses"); //acrescentar proxima dose dia
-            janela.add(vacinatomada,gbc);
-            gbc.gridy++;
+        int index = 0, k = 0;
+        int[] newArrayDose = new int[Vacina.getDosesCrianca().length];
+        for(String i : Vacina.getVacinas_crianca()){
+            for(String j : dados.getVacinas()){
+                if(i.equals(j)){
+                    newArrayDose[index] = dados.getArraydose()[k];
+                    k++;
+                }else{
+                    newArrayDose[index] = Vacina.getDosesCrianca()[index];
+                }
+            }
+            index++;
         }
+
+        index = 0;
+
+        if(idade < 12){
+            for(String i : Vacina.getVacinas_crianca()){
+                JLabel vacina = new JLabel(i);
+                janela.add(vacina, gbc);
+                gbc.gridx++;
+
+                JLabel falta = new JLabel("faltam: "+arraydose[index]+" doses");
+                janela.add(falta, gbc);
+                
+                gbc.gridx=0;
+                gbc.gridy++;
+            }
+        }else if(idade <= 18){
+            for(String i : Vacina.getVacinas_adolescente()){
+                JLabel vacina = new JLabel(i);
+                janela.add(vacina, gbc);
+                gbc.gridx++;
+
+                JLabel falta = new JLabel("faltam: "+arraydose[index]+" doses");
+                janela.add(falta, gbc);
+                
+                gbc.gridx=0;
+                gbc.gridy++;
+            }
+        }else{
+            for(String i : Vacina.getVacinas_adulto()){
+                JLabel vacina = new JLabel(i);
+                janela.add(vacina, gbc);
+                gbc.gridx++;
+
+                JLabel falta = new JLabel("faltam: "+arraydose[index]+" doses");
+                janela.add(falta, gbc);
+                
+                gbc.gridx=0;
+                gbc.gridy++;
+            }
+        }
+        
 
         //configuração da janela
         janela.pack();
