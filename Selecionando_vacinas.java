@@ -34,9 +34,7 @@ public class Selecionando_vacinas {
         JOptionPane.showMessageDialog(null, scrollPane, "Quais vacinas você já tomou?", JOptionPane.PLAIN_MESSAGE);
         selectedItems = checkBoxList.getSelectedItems();
     
-        bdd.atualizarPessoa(nome, cpf, idade, selectedItems);
-        // apos o botao save, adicionar uma outra janela perguntando a quantidade de doses tomadas e a quando
-        selecionando_quantidade_doses.prnt(cpf);
-
+        bdd.atualizarPessoa(nome, cpf, idade, selectedItems, null, null, null, null);
+        Selecionando_quantidade_doses.prnt(cpf, idade, nome);
     }
 }

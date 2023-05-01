@@ -111,7 +111,7 @@ public class Dados_pessoais{
                 }
                 
                 janela.dispose();
-                bdd.adicionarPessoa(nome, cpf, idade, null);
+                bdd.adicionarPessoa(nome, cpf, idade, null, null, null, null, null);
                 Selecionando_vacinas.prnt(nome, cpf, idade);
             }
         });

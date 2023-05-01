@@ -9,9 +9,9 @@ public class Banco_de_dados {
 
     private String nomeArquivo = "dados.txt";
 
-    public void adicionarPessoa(String nome, String cpf, int idade, List<String> selectedItems) {
+    public void adicionarPessoa(String nome, String cpf, int idade, List<String> selectedItems, List<Integer> dia, List<Integer> mes, List<Integer> ano, List<Integer> quantidaDose) {
         try (FileWriter writer = new FileWriter(nomeArquivo, true)) {
-            writer.write(nome + "/" + cpf + "/" + idade + "/" + selectedItems + "\n");
+            writer.write(nome + "/" + cpf + "/" + idade + "/" + selectedItems + "/" + dia + "/" + mes + "/" + ano + "/" + quantidaDose + "\n");
         } catch (IOException e) {
             e.printStackTrace(); 
         }
@@ -37,7 +37,7 @@ public class Banco_de_dados {
         return pessoasEncontradas;
     }
 
-    public void atualizarPessoa(String nome, String cpf, int idade, List<String> selStrings) {
+    public void atualizarPessoa(String nome, String cpf, int idade, List<String> selectedItems, List<Integer> dia, List<Integer> mes, List<Integer> ano, List<Integer> quantidaDose) {
       List<String> linhas = new ArrayList<>();
   
       try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
@@ -47,7 +47,7 @@ public class Banco_de_dados {
               String[] campos = linha.split("/");
   
               if (campos[1].equals(cpf)) {
-                  linhas.add(nome + "/" + cpf + "/" + idade + "/" + selStrings);
+                  linhas.add(nome + "/" + cpf + "/" + idade + "/" + selectedItems + "/" + dia + "/" + mes + "/" + ano + "/" + quantidaDose);
               } else {
                   linhas.add(linha);
               }

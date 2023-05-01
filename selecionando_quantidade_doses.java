@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
 
-public class selecionando_quantidade_doses {
-    public static void prnt(String cpf) {
+public class Selecionando_quantidade_doses {
+    public static void prnt(String cpf, int idade, String nome) {
 
         Banco_de_dados bdd = new Banco_de_dados();
         List<String[]> informacoespessois = bdd.buscarPessoa(cpf);
@@ -115,7 +115,7 @@ public class selecionando_quantidade_doses {
                     anoselecionado.add(anoselec);
                 }
 
-
+                bdd.atualizarPessoa(nome, cpf, idade, listavacinastomadas, diaselecionado, meselecionado, anoselecionado, quantidadevacinastomadas);
                 janela.dispose();
             }
         });
