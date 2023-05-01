@@ -21,20 +21,14 @@ public class selecionando_quantidade_doses {
         }
 
         JFrame janela = new JFrame("Selecionar quantidade de doses tomada e data da última dose");
-         /* Configurações da janela */
-        janela.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(10, 10, 10, 10);
-
-        List<Integer>quantidadevacinastomadas = new ArrayList<>();
-        List<String>dataUltimaDose = new ArrayList<>();
+        
+        JLabel quantidadedose = new JLabel("doses:");
         JComboBox<Integer>quantidadeDosesbox = new JComboBox<>();
         for(int i = 1; i <= 8;i++){
             quantidadeDosesbox.addItem(i);
         }
 
+        JLabel data = new JLabel("data:");
         JComboBox<Integer>dia = new JComboBox<>();
         for(int i = 1; i <= 31; i++){
             dia.addItem(i);
@@ -50,13 +44,41 @@ public class selecionando_quantidade_doses {
         for(int k = anoatual ; k >= anoatual - 100; k-- ){
             ano.addItem(k);
         }
+        
+        /* Configurações da janela */
+        janela.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 10, 10);
 
+        List<Integer>quantidadevacinastomadas = new ArrayList<>();
+        List<String>dataUltimaDose = new ArrayList<>();
+        
         for(int l = 0; l < vacinastomadas.length; l++){
-            JLabel vacinatomada = new JLabel(listavacinastomadas.get(l) + " " + quantidadeDosesbox + " " + dia + "/" + mes + "/" + ano);
-            janela.add(vacinatomada);
+            JLabel vacinatomada = new JLabel(listavacinastomadas.get(l));
+            janela.add(vacinatomada, gbc);
+            gbc.gridy ++;
+        }
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        
+        for(int l = 0; l < vacinastomadas.length; l++){
+            janela.add(quantidadedose, gbc);
+            janela.add(quantidadeDosesbox, gbc);
+            
+            gbc.gridx++;
+            janela.add(data, gbc);
+            janela.add(dia, gbc);
+            janela.add(mes, gbc);
+            janela.add(ano, gbc);
+            gbc.gridx--;
+       
+            gbc.gridy++;
+
             quantidadevacinastomadas.add((Integer) quantidadeDosesbox.getSelectedItem());
             dataUltimaDose.add( dia.getSelectedItem() + "|" + mes.getSelectedItem() + "|" + ano.getSelectedItem());
-            gbc.gridy++;
         }
          
         //configuração da janela
