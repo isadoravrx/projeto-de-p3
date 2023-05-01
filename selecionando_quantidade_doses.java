@@ -1,48 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Calendar;
 
 public class selecionando_quantidade_doses {
-    public static void prnt(String cpf){
-        
+    public static void prnt(String cpf) {
+
         Banco_de_dados bdd = new Banco_de_dados();
         List<String[]> informacoespessois = bdd.buscarPessoa(cpf);
-        String[] vacinastomadas = informacoespessois.get(0)[3].split(", "); 
-        List<String>listavacinastomadas = new ArrayList<>();
+        String[] vacinastomadas = informacoespessois.get(0)[3].split(", ");
+        List<String> listavacinastomadas = new ArrayList<>();
         vacinastomadas[0] = vacinastomadas[0].replaceAll("\\[", "");
-        vacinastomadas[vacinastomadas.length - 1 ] = vacinastomadas[vacinastomadas.length - 1].replaceAll("]", "");
-        for(int i = 0; i < vacinastomadas.length; i++){
+        vacinastomadas[vacinastomadas.length - 1] = vacinastomadas[vacinastomadas.length - 1].replaceAll("]", "");
+        for (int i = 0; i < vacinastomadas.length; i++) {
 
             listavacinastomadas.add(vacinastomadas[i]);
         }
 
         JFrame janela = new JFrame("Selecionar quantidade de doses tomada e data da última dose");
-        
-        JLabel quantidadedose = new JLabel("doses:");
-        JComboBox<Integer>quantidadeDosesbox = new JComboBox<>();
-        for(int i = 1; i <= 8;i++){
-            quantidadeDosesbox.addItem(i);
-        }
 
-        JLabel data = new JLabel("data:");
-        JComboBox<Integer>dia = new JComboBox<>();
-        for(int i = 1; i <= 31; i++){
-            dia.addItem(i);
-        }
-
-        JComboBox<Integer>mes = new JComboBox<>();
-        for(int j = 1; j <= 12; j++){
-            dia.addItem(j);
-        }
-
-        JComboBox<Integer>ano = new JComboBox<>();
-        int anoatual = Calendar.getInstance().get(Calendar.YEAR);
-        for(int k = anoatual ; k >= anoatual - 100; k-- ){
-            ano.addItem(k);
-        }
-        
         /* Configurações da janela */
         janela.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -50,22 +27,53 @@ public class selecionando_quantidade_doses {
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        List<Integer>quantidadevacinastomadas = new ArrayList<>();
-        List<String>dataUltimaDose = new ArrayList<>();
-        
-        for(int l = 0; l < vacinastomadas.length; l++){
+        List<Integer> quantidadevacinastomadas = new ArrayList<>();
+        List<String> dataUltimaDose = new ArrayList<>();
+
+        List<JComboBox<Integer>> comboDosesList = new ArrayList<>();
+
+        for (int l = 0; l < vacinastomadas.length; l++) {
             JLabel vacinatomada = new JLabel(listavacinastomadas.get(l));
-            janela.add(vacinatomada, gbc);            
-            gbc.gridx ++;
+            janela.add(vacinatomada, gbc);
+
+            gbc.gridx++;
+            JLabel quantidadedose = new JLabel("doses:");
             janela.add(quantidadedose, gbc);
-            gbc.gridx ++;
+
+            gbc.gridx++;
+
+            JComboBox<Integer> comboDoses = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8});
+            janela.add(comboDoses, gbc);
+            comboDosesList.add(comboDoses);
+
+            gbc.gridx++;
+            JLabel data = new JLabel("data:");
             janela.add(data, gbc);
 
-            gbc.gridy ++;
+            gbc.gridy++;
             gbc.gridx = 0;
         }
-        
-        //configuração da janela
+
+        gbc.gridy = 0;
+        gbc.gridx = 3;
+
+        JButton salvar = new JButton("Save");
+        janela.add(salvar, gbc);
+
+        salvar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                quantidadevacinastomadas.clear();
+
+                for (JComboBox<Integer> combo : comboDosesList) {
+                    int quantidade = (int) combo.getSelectedItem();
+                    quantidadevacinastomadas.add(quantidade);
+                }
+
+                System.out.println("Quantidades de doses selecionadas: " + quantidadevacinastomadas);
+            }
+        });
+
+        // configuração da janela
         janela.pack();
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
