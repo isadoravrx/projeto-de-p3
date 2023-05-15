@@ -5,7 +5,7 @@ public class Paciente_perfeito extends Pessoa{
     private int[] arraydose;
 
     Paciente_perfeito(int idade){
-        super("Cleiton da bike", "95195923000", idade);
+        super("Gabriel", "95195923000", idade);
         if(idade < 12){
             this.vacinas = Vacina.getVacinas_crianca();
             this.arraydose = Vacina.getDosesCrianca();
