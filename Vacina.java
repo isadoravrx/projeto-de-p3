@@ -2,9 +2,9 @@ import java.util.List;
 
 public class Vacina{
 
-    static List<String> vacinas_crianca =  List.of("bcg", "hepatite b", "poliomielite", "vrh", "penta", "pcv 10", "meningocócica c", "febre amarela", "sarampo, caxumba e rubéola", "sarampo, caxumba, rubéola e varicela", "hepatite a", "difteria e tétano", "hpv", "ppv 23", "varicela");
-    static List<String>vacinas_adolescente = List.of("hepatite b", "difteria e tétano", "febre amarela", "sarampo, caxumba e rubéola", "hpv", "ppv 23", "meningocócica");
-    static List<String>vacinas_adulto = List.of("hepatite B", "difteria e tétano", "febre amarela", "sarampo, caxumba e rubéola", "ppv 23");
+    static List<String> vacinas_crianca =  List.of("bcg", "hepatite b", "poliomielite", "vrh", "penta", "pcv 10", "meningocócica c", "febre amarela", "sarampo; caxumba e rubéola", "sarampo; caxumba; rubéola e varicela", "hepatite a", "difteria e tétano", "hpv", "ppv 23", "varicela");
+    static List<String>vacinas_adolescente = List.of("hepatite b", "difteria e tétano", "febre amarela", "sarampo; caxumba e rubéola", "hpv", "ppv 23", "meningocócica");
+    static List<String>vacinas_adulto = List.of("hepatite B", "difteria e tétano", "febre amarela", "sarampo; caxumba e rubéola", "ppv 23");
     static int[] numero_de_doses_crianca = {1,1,3,2,3,2,2,1,2,2,1,1,3,2,1,1} ;
     static int[] numero_de_doses_adolescentes = {3, 3, 1, 2, 2, 1, 1};
     static int[] numero_de_doses_adultos = {3, 3, 1, 3, 1};
@@ -54,4 +54,16 @@ public class Vacina{
         }
         return sumArray;
     } 
+
+    public static int[] getIntervalo_entre_doses_crianca() {
+        return intervalo_entre_doses_crianca;
+    }
+
+    public static int[] getIntervalo_entre_doses_adolescentes() {
+        return intervalo_entre_doses_adolescentes;
+    }
+
+    public static int[] getIntervalo_entre_doses_adultos() {
+        return intervalo_entre_doses_adultos;
+    }
 }

@@ -1,3 +1,1 @@
-gabriel/123/95/[difteria e tétano, sarampo, caxumba e rubéola, ppv 23]/[7, 1, 4, 4]/[1, 7, 1, 3]/[2021, 2023, 2020, 2023]/[6, 4, 3, 3]
-isa/51351635/6/[bcg, hepatite b, poliomielite]/[1, 1, 1]/[1, 1, 1]/[2022, 2021, 2020]/[1, 1, 1]
-isa/1234/0/[penta, pcv 10, meningocócica c]/[1, 1, 1]/[1, 1, 1]/[2023, 2023, 2017]/[2, 1, 1]
+gabreil /123/19/[hepatite B, febre amarela, sarampo; caxumba e rubéola]/[4, 4, 18]/[7, 6, 5]/[2017, 2022, 2023]/[8, 2, 1]
