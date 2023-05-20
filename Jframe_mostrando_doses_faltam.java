@@ -3,6 +3,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Jframe_mostrando_doses_faltam {
     public static void prnt(String cpf) {
@@ -203,14 +205,14 @@ public class Jframe_mostrando_doses_faltam {
 
                 /* proxima doses */
                 if (newArrayDose[index] <= 0) {
-                    JLabel falta = new JLabel("Concluído");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("Concluído");
+                    janela.add(next, gbc);
                 }else if(newTimeDose[index] <= 0){
-                    JLabel falta = new JLabel("Pendente");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("Pendente");
+                    janela.add(next, gbc);
                 }else{
-                    JLabel falta = new JLabel("proxima dose em: " + Math.abs(newTimeDose[index]) + " dias");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("proxima dose em: " + Math.abs(newTimeDose[index]) + " dias");
+                    janela.add(next, gbc);
                 }
 
                 gbc.gridx = 0;
@@ -236,14 +238,14 @@ public class Jframe_mostrando_doses_faltam {
 
                 /* proxima doses */
                 if (newArrayDose[index] <= 0) {
-                    JLabel falta = new JLabel("Concluído");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("Concluído");
+                    janela.add(next, gbc);
                 }else if(newTimeDose[index] <= 0){
-                    JLabel falta = new JLabel("Pendente");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("Pendente");
+                    janela.add(next, gbc);
                 }else{
-                    JLabel falta = new JLabel("proxima dose em: " + Math.abs(newTimeDose[index]) + " dias");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("proxima dose em: " + Math.abs(newTimeDose[index]) + " dias");
+                    janela.add(next, gbc);
                 }
 
                 gbc.gridx = 0;
@@ -269,14 +271,14 @@ public class Jframe_mostrando_doses_faltam {
 
                 /* proxima doses */
                 if (newArrayDose[index] <= 0) {
-                    JLabel falta = new JLabel("Concluído");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("Concluído");
+                    janela.add(next, gbc);
                 }else if(newTimeDose[index] <= 0){
-                    JLabel falta = new JLabel("Pendente");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("Pendente");
+                    janela.add(next, gbc);
                 }else{
-                    JLabel falta = new JLabel("proxima dose em: " + Math.abs(newTimeDose[index]) + " dias");
-                    janela.add(falta, gbc);
+                    JLabel next = new JLabel("proxima dose em: " + Math.abs(newTimeDose[index]) + " dias");
+                    janela.add(next, gbc);
                 }
 
                 gbc.gridx = 0;
@@ -284,6 +286,32 @@ public class Jframe_mostrando_doses_faltam {
                 index++;
             }
         }
+
+        /* Botão Atualizar */
+        JButton botaoAtualizar = new JButton("Atualizar");
+        gbc.gridx = 0;
+        gbc.gridy++;
+        janela.add(botaoAtualizar, gbc);
+
+        /* Botão Todas Vacinas */
+        JButton botaoTodasVacinas = new JButton("Todas Vacinas");
+        gbc.gridx++;
+        janela.add(botaoTodasVacinas, gbc);
+
+        /* Adição de ação para o botão "Atualizar" */
+        botaoAtualizar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // adicionar aba para atualizar os dados
+                janela.dispose();
+            }
+        });
+
+        /* Adição de ação para o botão "TodasVacinas" */
+        botaoTodasVacinas.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Jframe_paciente_perfeito.prnt(idade);
+            }
+        });
 
         /* configuração da janela */
         janela.pack();
