@@ -298,11 +298,15 @@ public class Jframe_mostrando_doses_faltam {
         gbc.gridx++;
         janela.add(botaoTodasVacinas, gbc);
 
+
+
         /* Adição de ação para o botão "Atualizar" */
         botaoAtualizar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // adicionar aba para atualizar os dados
+                Selecionando_vacinas.prnt(dados.getNome(), cpf, idade);
                 janela.dispose();
+                Jframe_after_login.prt();
             }
         });
 
